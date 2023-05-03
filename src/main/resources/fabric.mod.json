@@ -1,0 +1,25 @@
+{
+	"schemaVersion": 1,
+	"id": "mc1133_customization",
+	"version": "${version}",
+	"name": "MC-1133 Customization",
+	"description": "Make the fix for MC-1133 only apply to slime blocks",
+	"authors": [
+		"triphora"
+	],
+	"contact": {
+		"homepage": "https://bugs.mojang.com/browse/MC-1133",
+		"sources": "https://github.com/emmods/mc1133_customization"
+	},
+	"license": "Zlib",
+	"environment": "*",
+	"mixins": [
+		"mc1133_customization.mixins.json"
+	],
+	"accessWidener": "mc1133_customization.accessWidener",
+	"depends": {
+		"fabricloader": ">=0.14.19",
+		"minecraft": ">=1.20-alpha.23.18.a",
+		"java": ">=17"
+	}
+}

@@ -1,0 +1,42 @@
+plugins {
+	id 'fabric-loom' version '1.2-SNAPSHOT'
+}
+
+version = '0.1.0'
+group = 'dev.triphora'
+
+def name = 'mc1133_customization'
+def gameVersion = '23w18a'
+def yarnVersion = '1'
+def loaderVersion = '0.14.19'
+
+loom.accessWidenerPath.set file('src/main/resources/mc1133_customization.accessWidener')
+
+dependencies {
+	minecraft "com.mojang:minecraft:$gameVersion"
+	mappings "net.fabricmc:yarn:$gameVersion+build.$yarnVersion:v2"
+	modImplementation "net.fabricmc:fabric-loader:$loaderVersion"
+}
+
+base.archivesName = name
+
+processResources {
+	inputs.property 'version', version
+
+	filesMatching('fabric.mod.json') {
+		expand 'version': version
+	}
+}
+
+tasks.withType(JavaCompile).configureEach {
+	it.options.release.set 17
+}
+
+java {
+	withSourcesJar()
+
+	sourceCompatibility = JavaVersion.VERSION_17
+	targetCompatibility = JavaVersion.VERSION_17
+}
+
+jar.from 'LICENSE'
